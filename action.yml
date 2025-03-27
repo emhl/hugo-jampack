@@ -6,6 +6,10 @@ inputs:
     description: "Path of the directory containing the static assets."
     required: false
     default: "_site/"
+  flags:
+    description: "additional cli options for jampack"
+    required: false
+    default: ""
 runs:
   using: composite
   steps:
@@ -19,5 +23,5 @@ runs:
     - name: Genarate responsive images
       shell: bash
       run: |
-        npm exec jampack ./${{ inputs.path }}
+        npm exec jampack ./${{ inputs.path }} ${{ inputs.flags }}
         rm -rf ./${{ inputs.path }}/_jampack
