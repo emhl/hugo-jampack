@@ -4,7 +4,7 @@ author: "Lhassan Baazzi <baazzilhassan@gmail.com>"
 inputs:
   path:
     description: "Path of the directory containing the static assets."
-    required: true
+    required: false
     default: "_site/"
 runs:
   using: composite
@@ -19,5 +19,5 @@ runs:
     - name: Genarate responsive images
       shell: bash
       run: |
-        npm exec jampack ./_site
-        rm -rf ./_site/_jampack
+        npm exec jampack ./${{ inputs.path }}
+        rm -rf ./${{ inputs.path }}/_jampack
